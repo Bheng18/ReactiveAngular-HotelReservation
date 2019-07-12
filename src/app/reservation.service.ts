@@ -10,7 +10,8 @@ export class ReservationService {
 
   constructor(private _httpClient: HttpClient){ }
 
-  private baseUrl:string = 'http://localhost:8080';
+  // private baseUrl:string = 'http://localhost:8080';
+  private baseUrl:string = 'https://springboot-webflux.herokuapp.com';
   private reservationUrl:string = this.baseUrl + '/room/v1/reservation/';
   
    httpOptions = {
