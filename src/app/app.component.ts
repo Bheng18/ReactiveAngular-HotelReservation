@@ -10,6 +10,7 @@ import { ReservationService, ReservationRequest, Reservation } from './reservati
 })
 export class AppComponent {
   title = 'reservation-app';
+  headElements = ['ID', 'First', 'Last', 'Handle']; //for table
 
  constructor(private _reservationService: ReservationService){}
 
@@ -17,18 +18,22 @@ export class AppComponent {
   roomSearchForm: FormGroup;
   currentCheckInVal: string;
   currentCheckOutVal: string;
+  currentGuestName: string;
   currentPrice: number;
   currentRoomNumber: number;
   currentReservations: Reservation[];
 
   ngOnInit(){
      this.roomSearchForm = new FormGroup({
+        guestName: new FormControl(''),
         checkin: new FormControl(''),
         checkout: new FormControl(''),
         roomNumber: new FormControl('')
      });
 
      this.roomSearchForm.valueChanges.subscribe(form => {
+        
+        this.currentGuestName = form.guestName;
         this.currentCheckInVal = form.checkin;
         this.currentCheckOutVal = form.checkout;
 
@@ -58,7 +63,7 @@ export class AppComponent {
 
   createReservation(){
     this._reservationService.createReservation(
-      new ReservationRequest(this.currentRoomNumber, this.currentCheckInVal, this.currentCheckOutVal, this.currentPrice)
+      new ReservationRequest(this.currentGuestName, this.currentRoomNumber, this.currentCheckInVal, this.currentCheckOutVal, this.currentPrice)
     ).subscribe(postResult => {
        console.log(postResult);
        this.getCurrentReservations();
@@ -71,6 +76,10 @@ export class AppComponent {
        console.log(getResult);
        this.getCurrentReservations();
     });
+  }
+
+  editReservation(reservation){
+    console.log(reservation);
   }
 
 }

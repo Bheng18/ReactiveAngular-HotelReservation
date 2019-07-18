@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 // import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonsModule } from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ButtonsModule.forRoot(),
     // AppRoutingModule
   ],
   providers: [],

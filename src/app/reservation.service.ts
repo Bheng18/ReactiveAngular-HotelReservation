@@ -34,12 +34,14 @@ export class ReservationService {
 }
 
 export class ReservationRequest{
+  guestName: string;
   roomNumber: number;
   checkIn: string;
   checkOut: string;
   price: number;
 
-  constructor(roomNumber: number, checkIn: string, checkOut: string, price: number){
+  constructor(guestName: string, roomNumber: number, checkIn: string, checkOut: string, price: number){
+     this.guestName = guestName;
      this.roomNumber = roomNumber;
      this.checkIn = checkIn;
      this.checkOut = checkOut;
@@ -49,6 +51,7 @@ export class ReservationRequest{
 
 export interface Reservation{
   id: string;
+  guestName: string;
   roomNumber: number;
   checkIn: Date;
   checkOut: Date;
